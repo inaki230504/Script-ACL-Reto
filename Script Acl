@@ -1,0 +1,29 @@
+#!bin/bash
+cd /home/inakimendizabal/
+mkdir proyectos
+cd /home/inakimendizabal/proyectos/
+touch Proyecto1.pdf
+touch Proyecto2.pdf
+mkdir pruebas
+mkdir src
+cd pruebas
+touch prueba1.pdf
+touch prueba2.pdf
+cd src
+touch app1.sh
+tocuh app2.sh
+addgroup sistemas-informaticion
+addgroup departamento-desarollo
+addgroup departamento-explotacion
+useradd -g sistemas-informaticion -d /home/usu-sinformacion -m -s /bin/bash usu_sinformacion
+useradd -g departamento-desarollo -d /home/usu_desarollo -m -s /bin/bash usu_desarollo
+useradd -g departamento-explotacion -d /home/usu-explotacion -m -s /bin/bash usu_explotacion
+cd /home/inakimendizabal/
+setfacl -R -m d:g:sistemas-informaticion:7 proyectos/
+cd proyectos/
+setfacl -R -m d:g:departamento-desarollo:rwx src/
+setfacl -R -m d:g:departamento-explotacion:rx src/
+setfacl -R -m d:g:departamento-explotacion:rwx pruebas/
+cd ..
+chmod 700 proyectos/ -R
+
